@@ -32,9 +32,9 @@ namespace Fishbait
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
+                app.UseEndpoints(endpoints =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    endpoints.MapDefaultControllerRoute();
                 });
             });
         }
