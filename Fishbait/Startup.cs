@@ -17,11 +17,17 @@ namespace Fishbait
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("Verify", "Account/{action=Verify}", new { controller = "Account" });
+                routes.MapRoute("Default", "{controller=Home}/{action=Index}");
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -21,20 +21,21 @@ namespace Fishbait.Controllers
         }
         void connectionString()
         {
-            con.ConnectionString = "server=Localhost;user id=Tijmen;database=fishbait";
+            con.ConnectionString = "Server = localhost; Database = fishbait; Uid = Tijmen; Pwd = Suckmycred123";
         }
+        [HttpPost]
         public IActionResult Verify(User acc)
         {
             connectionString();
             con.Open();
             com.Connection = con;
-            com.CommandText = "select * from users where username='"+acc.Username+"' and password='"+acc.Password+"'";
+            com.CommandText = "SELECT * FROM users WHERE username='"+acc.Username+"' AND password='"+acc.Password+"'";
             dr = com.ExecuteReader();
             if(dr.Read())
             {
                 con.Close();
                 return View("Succes");
-            }
+            } 
             else
             {
                 con.Close();
