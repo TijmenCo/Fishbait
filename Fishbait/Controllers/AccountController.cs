@@ -21,7 +21,7 @@ namespace Fishbait.Controllers
         }
         void connectionString()
         {
-            con.ConnectionString = "Server = localhost; Database = fishbait; Uid = Tijmen; Pwd = Suckmycred123";
+            con.ConnectionString = "server=127.0.0.1;user=Tijmen;database=fishbait;password=Suckmycred123";
         }
         [HttpPost]
         public IActionResult Verify(User acc)
